@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="driver">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/oracle" />
+      <root url="file://$PROJECT_DIR$/src/oracle" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/oracle" recursive="false" />
+  </library>
+</component>
