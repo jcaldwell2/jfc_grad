@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Oracle - @picard2.radford.edu" uuid="c3c7bac3-0484-4445-881c-459cb512c14f">
+      <driver-ref>oracle</driver-ref>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//picard2.radford.edu:1521/itec2.radford.edu</jdbc-url>
+    </data-source>
+  </component>
+</project>
