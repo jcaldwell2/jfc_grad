@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+     <indexer table="ruweb" mapper="com.ngdata.hbaseindexer.morphline.MorphlineResultToSolrMapper">   
+          <param name="morphlineFile" value="hbase-collections-ruweb/morphlines.conf"/>
+     </indexer>
+     
+     
+     
+     

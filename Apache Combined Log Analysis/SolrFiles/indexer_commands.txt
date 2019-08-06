@@ -1,0 +1,1 @@
+hbase-indexer add-indexer -n ruwebIndexer -c $HOME/morphline-hbase-mapper.xml -cp solr.zk=localhost:2181/solr -cp solr.collection=hbase-collection-ruweb
