@@ -33,7 +33,6 @@ count = 1
 def format_line(line):
     line = line.replace("[", "\"",1)
     line = line.replace("]", "\"",1)
-
     quotes = 0
     new_fields = []
     temp_string = ""
@@ -72,8 +71,6 @@ def format_line(line):
             new_fields.append(temp_string + ",")
             element_count += 1
             temp_string = ""
-
-
         if word.count("\"") == 1 and quotes == 0:
             temp_string += word
 
@@ -143,6 +140,5 @@ def main():
 
     except TypeError:
         print(arg_error)
-
 
 main()

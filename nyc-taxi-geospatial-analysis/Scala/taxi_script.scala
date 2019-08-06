@@ -49,11 +49,6 @@ class RichRow(row: org.apache.spark.sql.Row) {
 		}
 	}
 }
-
-
-
-       //taxiDF.registerTempTable("TAXI_DATA")
-
   /*
       We can also map the DF to a table and query against it.
       
@@ -61,14 +56,9 @@ class RichRow(row: org.apache.spark.sql.Row) {
   */
   	  
        println("\n\nTaxi Data Analysis by Month (Currently just January)")
-
-       val taxiDF = taxiDF      
-  	 
+       val taxiDF = taxiDF       	 
   	//  taxiDF.select("tip_amount").alias("Highest Tips").select("do_borough").alias("Drop Off Borough").show()
        taxiDF.groupBy("do_borough").agg(max("tip_amount")).orderBy(desc("max(tip_amount)")).show()
-  	 
-
-
 
 
   	 /*
@@ -76,8 +66,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
 	    spark.sql("SELECT max(tip_amount) as Highest_Tips, do_borough as Drop_Off FROM TAXI_DATA group by do_borough order by max(tip_amount) desc").show()
  	  */
      
-     println("\nHighest Tips by Drop Off Borough")
-
+      println("\nHighest Tips by Drop Off Borough")
       val totTripDF = taxiDF
       totTripDF.groupBy("do_borough").agg(round(sum("total_amount"),2)).orderBy(desc("round(sum(total_amount), 2)")).show()
 
@@ -88,8 +77,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
   */   
 
    
-      println("\nTotal Passenger Count")   
-
+      println("\nTotal Passenger Count")
       val passCountDF = taxiDF     
       passCountDF.agg(sum("passenger_count")).show()
 
@@ -100,7 +88,6 @@ class RichRow(row: org.apache.spark.sql.Row) {
       */
 
       val totDistDF = taxiDF
-
       println("\nTotal Trip Distance")
       totDistDF.agg(round(sum("trip_distance"), 2)).show()
 
@@ -110,9 +97,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
 
 
       val distByBorDF = taxiDF
-
-      println("\nTrip Distance by Dropoff Borough")
-      
+      println("\nTrip Distance by Dropoff Borough")      
       distByBorDF.groupBy("do_borough").agg(round(sum("trip_distance"), 2)).orderBy(desc("round(sum(trip_distance), 2)")).show()
 
 
@@ -121,9 +106,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
       */
 
       val tollCostDF = taxiDF
-
-      println("\nTotal Toll Cost")
-    
+      println("\nTotal Toll Cost")    
       tollCostDF.agg(round(sum("tolls_amount"), 2)).show()
 
      /*
@@ -131,9 +114,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
     */
 
       val totTollDF = taxiDF
-
       println("\nTotal Toll Amount by Dropoff Borough")
-
       totTollDF.groupBy("do_borough").agg(round(sum("tolls_amount"), 2)).orderBy(desc("round(sum(tolls_amount), 2)")).show()
 
      
@@ -141,9 +122,7 @@ class RichRow(row: org.apache.spark.sql.Row) {
       
 
        val tripByBoDF = taxiDF
-
-      println("\nTrips by Dropoff Borough")
-      
+      println("\nTrips by Dropoff Borough")      
       tripByBoDF.groupBy("do_borough").agg(count("*")).orderBy(desc("count(1)")).show()
 
 
@@ -152,31 +131,23 @@ class RichRow(row: org.apache.spark.sql.Row) {
 
       
       println("\nTop Ten Trips Where Distance = 0")
-
-      val zeroDistDF = taxiDF
-     
+      val zeroDistDF = taxiDF     
       zeroDistDF.filter("trip_distance < 0.001").groupBy("do_borough", "RatecodeID", "trip_distance").agg(count("*")).orderBy(desc("count(1)")).show(30)
 
 
      // spark.sql("SELECT count(*) as Trip_Count, trip_distance, do_borough, RatecodeID FROM TAXI_DATA where trip_distance < 0.1 group by do_borough, RatecodeID, trip_distance  order by count(*) desc limit 10").show()
  
 
-      println("\nMost Trips by hour ")
-     
+      println("\nMost Trips by hour ")     
       val mostTripsDF = taxiDF
-
       mostTripsDF.groupBy("pu_hour").agg(count("*")).orderBy(desc("count(1)")).show(24)
 
       /*
       spark.sql("SELECT count(*) as Trip_Count, pu_hour as Hour FROM TAXI_DATA group by pu_hour order by count(*) desc").show()
       */
-
-
-
     println("\n\n")
    
    // sc.stop()
-
 
 
 /*

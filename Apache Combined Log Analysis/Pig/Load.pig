@@ -8,7 +8,6 @@ using external jar files.  Fields are checked for empty values and replaced with
 appropriate values instead. The result is stored into HBase so that it is indexed into Solr. 
 
 */
-
 -- Jar files containing the UDFs to determine location by ip
 -- Newest version of akela 0.6 was corrupt and has to find the previous version
 REGISTER 'akela-0.5.jar';
